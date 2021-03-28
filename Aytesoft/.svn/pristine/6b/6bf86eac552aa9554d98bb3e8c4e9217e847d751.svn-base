@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Aytesoft.Models;
+
+namespace Aytesoft.Controllers
+{
+    public class ProductController : Controller
+    {
+        // GET: Product
+        aytesoft_mvcEntities db = new aytesoft_mvcEntities();
+        [Authorize]
+        public ActionResult Index()
+        {
+            ViewBag.Kullanici = db.customers.Where(x => x.Id == User.Identity.Name).Select(x => x.Name).First();
+            return View(db.Products.ToList());
+        }
+
+        [HttpPost]
+        public JsonResult AddBasket(int productId, int quantity)
+        {
+            string userid = User.Identity.Name;
+            DateTime date = DateTime.Now.Date;
+            Product pd = db.Products.Where(x => x.id == productId).FirstOrDefault();
+            basket bt = new basket();
+            bt.productid = productId;
+            bt.customerid = userid;
+            bt.quantity = quantity;
+            bt.createdate = date;
+            bt.productcode = pd.Code;
+            bt.productname = pd.Name;
+            bt.price = 0.0;
+            db.baskets.Add(bt);
+            var rt = db.SaveChanges();
+            return Json(rt,JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        public ActionResult Basket()
+        {
+            List<basket> bt = db.baskets.Where(x => x.customerid == User.Identity.Name).ToList();
+            return View(bt);
+        }
+    }
+}

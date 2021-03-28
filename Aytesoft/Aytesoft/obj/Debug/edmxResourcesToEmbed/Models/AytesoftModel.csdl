@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="aytesoft_mvcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="B2bCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Adress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TaxOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TaxNumber" Type="Int32" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Tel2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Gsm1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Gsm2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Fax1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOfUser" Type="Int32" />
+    <Property Name="NumberOfUserAndroid" Type="Int32" />
+    <Property Name="NumberOfUserIos" Type="Int32" />
+    <Property Name="RiskLimit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreditLimit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ManufacturerCode" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="RuleCode" Type="Int32" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="ShelfAdress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="MinOrder" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Notes1" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Notes2" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="Deleted" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="aytesoft_mvcEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="baskets" EntityType="aytesoft_mvcModel.basket" />
+    <EntitySet Name="product_price" EntityType="aytesoft_mvcModel.product_price" />
+    <EntitySet Name="orders" EntityType="aytesoft_mvcModel.order" />
+    <EntitySet Name="order_detail" EntityType="aytesoft_mvcModel.order_detail" />
+  </EntityContainer>
+  <EntityType Name="basket">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="productid" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="createdate" Type="DateTime" Precision="0" />
+    <Property Name="productcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="productname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Double" />
+  </EntityType>
+  <EntityType Name="product_price">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Double" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="no" />
+    </Key>
+    <Property Name="no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerid" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="totalquantity" Type="Int32" />
+    <Property Name="totalprice" Type="Double" />
+    <Property Name="productid" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="createdate" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="order_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="productname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="customerid" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Double" />
+    <Property Name="total" Type="Double" />
+    <Property Name="date" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="discountrate" Type="Int32" />
+    <Property Name="discount" Type="Double" />
+    <Property Name="orderno" Type="Int32" />
+  </EntityType>
+</Schema>

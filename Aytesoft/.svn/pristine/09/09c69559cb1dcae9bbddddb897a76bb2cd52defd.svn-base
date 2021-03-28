@@ -1,0 +1,81 @@
+﻿@using Aytesoft.Models
+
+@model List<Product>
+@{
+    ViewBag.Title = "Products";
+}
+<ul class="breadcrumb">
+    <li><a href="#"><i class="fa fa-home"></i></a></li>
+    <li><a href="#">Product</a></li>
+</ul>
+<div class="row">
+    <script type="text/javascript">
+        function Add(pid)
+        {    
+            var quantity = document.getElementById("quantity").value;
+            $.post("AddBasket?productId=" + pid + "&quantity="+ quantity, function (data) {
+                addProductNotice('Product added to Cart', '', '<h3><a href="#">Product</a> added to <a href="#">shopping cart</a>!</h3>', 'success');
+            });
+        }
+        function addProductNotice(title, text, type) {
+            $.jGrowl.defaults.closer = false;
+            //Stop jGrowl
+            //$.jGrowl.defaults.sticky = true;
+            var tpl =  '<h3>'+text+'</h3>';
+            $.jGrowl(tpl, {		
+                life: 4000,
+                header: title,
+                speed: 'slow',
+                theme: type
+            });
+        }
+    </script>
+    <!--Middle Part Start-->
+    <div id="content" class="col-sm-9 text-center">
+        <h2 class="title">Products</h2>
+        <div class="table-responsive form-group">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td class="text-center">Image</td>
+                        <td class="text-center">Code</td>
+                        <td class="text-center">Name</td>
+                        <td class="text-center">Manufacturer</td>
+                        <td class="text-center">Manufacturer Code</td>
+                        <td class="text-center">Stock State</td>
+                        <td class="text-center">Order Quantity</td>
+                        <td class="text-center">Add Cart</td>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach (Product item in Model)
+                        {
+                            if (@item.Unit >= 1 && item.IsActive == 1)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                            <i class="fa fa-camera"></i>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="product.html">@item.Code</a>
+                                    </td>
+                                    <td class="text-center">@item.Name</td>
+                                    <td class="text-center">@item.Manufacturer</td>
+                                    <td class="text-center">@item.ManufacturerCode</td>
+                                    <td class="text-center"><i class="fa fa-check-circle" style="color:green"></i></td>
+                                    <td class="text-center"><input id="quantity" type="number" min="@item.MinOrder" max="@item.Unit"/></td>
+                                    <td class="text-center">
+                                        <button class="addbasket" data-pID="@item.id" onclick="Add(@item.id)"><i class="fa fa-cart-plus" style="color:greenyellow"></i> </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!--Middle Part End-->
+    <!--Right Part Start -->
+    <!--Right Part End -->
+</div>

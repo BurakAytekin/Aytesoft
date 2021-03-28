@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="aytesoft_mvcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="basket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerid" Type="nvarchar" MaxLength="50" />
+          <Property Name="productid" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="createdate" Type="date" />
+          <Property Name="productcode" Type="varchar" MaxLength="50" />
+          <Property Name="productname" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="B2bCode" Type="varchar" MaxLength="50" />
+          <Property Name="Adress" Type="varchar" MaxLength="300" />
+          <Property Name="Town" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="TaxOffice" Type="varchar" MaxLength="50" />
+          <Property Name="TaxNumber" Type="int" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Tel1" Type="varchar" MaxLength="15" />
+          <Property Name="Tel2" Type="varchar" MaxLength="15" />
+          <Property Name="Gsm1" Type="varchar" MaxLength="15" />
+          <Property Name="Gsm2" Type="varchar" MaxLength="15" />
+          <Property Name="Fax1" Type="varchar" MaxLength="15" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="NumberOfUser" Type="int" />
+          <Property Name="NumberOfUserAndroid" Type="int" />
+          <Property Name="NumberOfUserIos" Type="int" />
+          <Property Name="RiskLimit" Type="varchar" MaxLength="255" />
+          <Property Name="CreditLimit" Type="varchar" MaxLength="255" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="20" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Manufacturer" Type="nchar" MaxLength="50" />
+          <Property Name="ManufacturerCode" Type="nchar" MaxLength="50" />
+          <Property Name="RuleCode" Type="int" />
+          <Property Name="Unit" Type="int" />
+          <Property Name="ShelfAdress" Type="nchar" MaxLength="100" />
+          <Property Name="MinOrder" Type="int" />
+          <Property Name="Notes" Type="nchar" MaxLength="200" />
+          <Property Name="Notes1" Type="nchar" MaxLength="200" />
+          <Property Name="Notes2" Type="nchar" MaxLength="200" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="Deleted" Type="int" />
+        </EntityType>
+        <EntityContainer Name="aytesoft_mvcModelStoreContainer">
+          <EntitySet Name="basket" EntityType="Self.basket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="aytesoft_mvcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="B2bCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxNumber" Type="Int32" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Tel2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gsm1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gsm2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Fax1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfUser" Type="Int32" />
+          <Property Name="NumberOfUserAndroid" Type="Int32" />
+          <Property Name="NumberOfUserIos" Type="Int32" />
+          <Property Name="RiskLimit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreditLimit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ManufacturerCode" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="RuleCode" Type="Int32" />
+          <Property Name="Unit" Type="Int32" />
+          <Property Name="ShelfAdress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="MinOrder" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="Notes1" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="Notes2" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="Deleted" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="aytesoft_mvcEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="baskets" EntityType="aytesoft_mvcModel.basket" />
+        </EntityContainer>
+        <EntityType Name="basket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="createdate" Type="DateTime" Precision="0" />
+          <Property Name="productcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="productname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="aytesoft_mvcModelStoreContainer" CdmEntityContainer="aytesoft_mvcEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="aytesoft_mvcModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="B2bCode" ColumnName="B2bCode" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="TaxOffice" ColumnName="TaxOffice" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+                <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+                <ScalarProperty Name="Gsm1" ColumnName="Gsm1" />
+                <ScalarProperty Name="Gsm2" ColumnName="Gsm2" />
+                <ScalarProperty Name="Fax1" ColumnName="Fax1" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="NumberOfUser" ColumnName="NumberOfUser" />
+                <ScalarProperty Name="NumberOfUserAndroid" ColumnName="NumberOfUserAndroid" />
+                <ScalarProperty Name="NumberOfUserIos" ColumnName="NumberOfUserIos" />
+                <ScalarProperty Name="RiskLimit" ColumnName="RiskLimit" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="aytesoft_mvcModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ManufacturerCode" ColumnName="ManufacturerCode" />
+                <ScalarProperty Name="RuleCode" ColumnName="RuleCode" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ShelfAdress" ColumnName="ShelfAdress" />
+                <ScalarProperty Name="MinOrder" ColumnName="MinOrder" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Notes1" ColumnName="Notes1" />
+                <ScalarProperty Name="Notes2" ColumnName="Notes2" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="baskets">
+            <EntityTypeMapping TypeName="aytesoft_mvcModel.basket">
+              <MappingFragment StoreEntitySet="basket">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="productcode" ColumnName="productcode" />
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
